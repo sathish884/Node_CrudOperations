@@ -84,7 +84,7 @@ router.post("/registerUser", async (req, res) => {
     }
 })
 
-// User registerations 
+// User login 
 router.post("/login", async (req, res) => {
     const { email, password } = req.body;
     try {

@@ -1,20 +1,24 @@
 const express = require("express");
-const app = express();
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose");
 const UserRouter = require("./Routes/UserRoutes");
+
+const app = express();
+
 require("dotenv").config();
+
+const PORT = process.env.PORT;
 
 app.use(bodyParser.json());
 app.use("/apiUser", UserRouter)
-const PORT = process.env.PORT
 
-mongoose.connect(process.env.MONGODB).then(()=>{
+
+mongoose.connect(process.env.MONGODB).then(() => {
     console.log("Connected to MongoDB");
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`);
     });
-}).catch(error =>{
+}).catch(error => {
     console.log("Connection error", error.message);
 })
 
